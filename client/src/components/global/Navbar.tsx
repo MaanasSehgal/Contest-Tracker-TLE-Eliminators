@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useStore from "../../zustand/useStore.store";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Calendar, MessageSquare } from "lucide-react";
+import { Menu, X, Sun, Moon, Calendar, Video, ClipboardList } from "lucide-react"; // Video and ClipboardList icons
 
 const Navbar = () => {
   const { currentTheme, setCurrentTheme } = useStore();
@@ -16,6 +16,8 @@ const Navbar = () => {
       setActiveTab("contest-tracker");
     } else if (path.includes("post-contest-discussions")) {
       setActiveTab("post-contest-discussions");
+    } else if (path.includes("update-contest")) {
+      setActiveTab("update-contest");
     } else {
       setActiveTab("/");
     }
@@ -151,49 +153,25 @@ const Navbar = () => {
           >
             <motion.div
               variants={itemVariants}
-              className="hidden md:flex space-x-6"
+              className="hidden lg:flex space-x-6"
             >
-              <div className="relative">
-                <Link
-                  to="/contest-tracker"
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
-                    activeTab === "contest-tracker"
-                      ? "text-purple-600 dark:text-purple-400 font-semibold"
-                      : "text-gray-700 dark:text-darkText-300 hover:text-purple-600 dark:hover:text-purple-400"
-                  }`}
-                >
-                  <Calendar className="h-4 w-4" />
-                  <span>Contest Tracker</span>
-                </Link>
-              </div>
-
-              <div className="relative">
-                <Link
-                  to="/post-contest-discussions"
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
-                    activeTab === "post-contest-discussions"
-                      ? "text-purple-600 dark:text-purple-400 font-semibold"
-                      : "text-gray-700 dark:text-darkText-300 hover:text-purple-600 dark:hover:text-purple-400"
-                  }`}
-                >
-                  <MessageSquare className="h-4 w-4" />
-                  <span>Post Contest Discussions</span>
-                </Link>
-              </div>
-
-                <div className="relative">
-                <Link
-                  to="/update-contest"
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
-                  activeTab === "update-contest"
-                    ? "text-purple-600 dark:text-purple-400 font-semibold"
-                    : "text-gray-700 dark:text-darkText-300 hover:text-purple-600 dark:hover:text-purple-400"
-                  }`}
-                >
-                  <MessageSquare className="h-4 w-4" />
-                  <span>Update Contest</span>
-                </Link>
+              {["contest-tracker", "post-contest-discussions", "update-contest"].map((route, index) => (
+                <div key={index} className="relative">
+                  <Link
+                    to={`/${route}`}
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
+                      activeTab === route
+                        ? "text-purple-600 dark:text-purple-400 font-semibold"
+                        : "text-gray-700 dark:text-darkText-300 hover:text-purple-600 dark:hover:text-purple-400"
+                    }`}
+                  >
+                    {route === "contest-tracker" && <Calendar className="h-4 w-4" />}
+                    {route === "post-contest-discussions" && <Video className="h-4 w-4" />}
+                    {route === "update-contest" && <ClipboardList className="h-4 w-4" />}
+                    <span className="hidden sm:block">{route.replace("-", " ").toUpperCase()}</span>
+                  </Link>
                 </div>
+              ))}
             </motion.div>
 
             <motion.button
@@ -212,7 +190,7 @@ const Navbar = () => {
               )}
             </motion.button>
 
-            <motion.div className="md:hidden" variants={itemVariants}>
+            <motion.div className="lg:hidden" variants={itemVariants}>
               <motion.button
                 onClick={toggleMenu}
                 className="p-2 rounded-md text-gray-700 dark:text-darkText-300 hover:bg-gray-100 dark:hover:bg-darkBox-800 transition-colors duration-300"
@@ -231,11 +209,10 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            className="fixed inset-0 z-50 md:hidden bg-white dark:bg-darkBox-900 pt-16"
+            className="fixed inset-0 z-50 lg:hidden bg-white dark:bg-darkBox-900 pt-16"
             variants={mobileMenuVariants}
             initial="hidden"
             animate="visible"
@@ -253,42 +230,23 @@ const Navbar = () => {
               </motion.button>
               
               <div className="px-4 py-6 space-y-6 mt-8">
-                <Link
-                  to="/contest-tracker"
-                  onClick={closeMenu}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-md text-base font-medium transition-colors duration-300 ${
-                    activeTab === "contest-tracker"
-                      ? "bg-purple-100 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400"
-                      : "text-gray-700 dark:text-darkText-300 hover:bg-gray-100 dark:hover:bg-darkBox-800"
-                  }`}
-                >
-                  <Calendar className="h-5 w-5" />
-                  <span>Contest Tracker</span>
-                </Link>
-                <Link
-                  to="/post-contest-discussions"
-                  onClick={closeMenu}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-md text-base font-medium transition-colors duration-300 ${
-                    activeTab === "post-contest-discussions"
-                      ? "bg-purple-100 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400"
-                      : "text-gray-700 dark:text-darkText-300 hover:bg-gray-100 dark:hover:bg-darkBox-800"
-                  }`}
-                >
-                  <MessageSquare className="h-5 w-5" />
-                  <span>Post Contest Discussions</span>
-                </Link>
-                <Link
-                  to="/update-contest"
-                  onClick={closeMenu}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-md text-base font-medium transition-colors duration-300 ${
-                  activeTab === "update-contest"
-                    ? "bg-purple-100 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400"
-                    : "text-gray-700 dark:text-darkText-300 hover:bg-gray-100 dark:hover:bg-darkBox-800"
-                  }`}
-                >
-                  <MessageSquare className="h-5 w-5" />
-                  <span>Update Contest</span>
-                </Link>
+                {["contest-tracker", "post-contest-discussions", "update-contest"].map((route, index) => (
+                  <Link
+                    key={index}
+                    to={`/${route}`}
+                    onClick={closeMenu}
+                    className={`flex items-center space-x-3 px-4 py-3 rounded-md text-base font-medium transition-colors duration-300 ${
+                      activeTab === route
+                        ? "bg-purple-100 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400"
+                        : "text-gray-700 dark:text-darkText-300 hover:bg-gray-100 dark:hover:bg-darkBox-800"
+                    }`}
+                  >
+                    {route === "contest-tracker" && <Calendar className="h-5 w-5" />}
+                    {route === "post-contest-discussions" && <Video className="h-5 w-5" />}
+                    {route === "update-contest" && <ClipboardList className="h-5 w-5" />}
+                    <span>{route.replace("-", " ").toUpperCase()}</span>
+                  </Link>
+                ))}
               </div>
             </div>
           </motion.div>
