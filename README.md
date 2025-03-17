@@ -2,6 +2,8 @@
 
 Welcome to the **TLE Eliminators Contest Tracker** project by `Maanas Sehgal`! This project is designed to simplify the process of tracking competitive programming contests from popular platforms like LeetCode, CodeChef, and Codeforces. The platform allows users to view and track contests, automatically update solutions, and access contest discussions from YouTube. It provides an intuitive and responsive UI, supporting both light and dark themes, ensuring an enhanced experience for users.
 
+Deployed Link: [Contest Tracker by Maanas Sehgal](https://contest-tracker-tle-eliminators.vercel.app/)
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
