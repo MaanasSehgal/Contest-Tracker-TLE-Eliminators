@@ -21,6 +21,7 @@ Welcome to the **TLE Eliminators Contest Tracker** project by `Maanas Sehgal`! T
   - [GET `/trigger-update-all-contests`](#12-get-trigger-update-all-contests)
   - [GET `/trigger-update-solutions`](#13-get-trigger-update-solutions)
   - [GET `/trigger-all`](#14-get-trigger-all)
+4. [Conclusion](#conclusion)
 
 ---
 
