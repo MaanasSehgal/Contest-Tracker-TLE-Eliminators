@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --scrollbar-track: rgba(243, 244, 246, 0.95);
+  --scrollbar-thumb-gradient: linear-gradient(180deg, rgb(139, 92, 246), rgb(96, 165, 250));
+  --scrollbar-border: rgba(209, 213, 219, 0.95);
+  --scrollbar-shadow: rgba(139, 92, 246, 0.2);
+  --scrollbar-hover-shadow: rgba(139, 92, 246, 0.4);
+}
+
+.dark {
+  --scrollbar-track: rgba(24, 24, 27, 0.95);
+  --scrollbar-thumb-gradient: linear-gradient(180deg, rgb(103, 51, 152), rgb(59, 130, 246));
+  --scrollbar-border: rgba(39, 39, 42, 0.95);
+  --scrollbar-shadow: rgba(168, 85, 247, 0.4);
+  --scrollbar-hover-shadow: rgba(168, 85, 247, 0.6);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--scrollbar-border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-gradient);
+  border-radius: 4px;
+  border: 1px solid var(--scrollbar-border);
+  box-shadow: 0 0 8px var(--scrollbar-shadow);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgb(192, 132, 252), rgb(96, 165, 250));
+  box-shadow: 0 0 12px var(--scrollbar-hover-shadow);
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(139, 92, 246) var(--scrollbar-track);
+}
+
+.dark * {
+  scrollbar-color: rgb(103, 51, 152) var(--scrollbar-track);
+}

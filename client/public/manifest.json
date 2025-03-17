@@ -1,0 +1,25 @@
+{
+  "short_name": "TLE Eliminators Contest Tracker",
+  "name": "Track and bookmark your Leetcode, Codeforces, and Codechef contests. View upcoming and past contests, and find YouTube solutions.",
+  "icons": [
+    {
+      "src": "icons/tle_eliminators_logo.jpg",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "icons/tle_eliminators_logo.jpg",
+      "type": "image/jpg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icons/tle_eliminators_logo.jpg",
+      "type": "image/jpg",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
