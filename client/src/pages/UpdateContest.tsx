@@ -129,6 +129,8 @@ const UpdateContest: React.FC = () => {
   };
 
   const handleUpdateSuccess = (updatedContest: ContestSchema) => {
+    console.log("Updated contest:", updatedContest);
+    console.log(contests);
     setContests((prevContests) =>
       prevContests.map((contest) =>
         contest._id === updatedContest._id ? updatedContest : contest
@@ -179,20 +181,6 @@ const UpdateContest: React.FC = () => {
         </p>
       </motion.div>
 
-      <AnimatePresence>
-        {showSuccessMessage && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-300 px-6 py-3 rounded-lg shadow-lg flex items-center"
-          >
-            <CheckCircle2 className="w-5 h-5 mr-2" />
-            Solution updated successfully!
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -205,14 +193,6 @@ const UpdateContest: React.FC = () => {
               <Search className="w-5 h-5 mr-2 text-primary" />
               Find Contests
             </h2>
-
-            <button
-              onClick={toggleFilters}
-              className="md:hidden flex items-center justify-center px-4 py-2 bg-gray-100 dark:bg-darkBox-850 rounded-lg text-gray-700 dark:text-darkText-300"
-            >
-              <SlidersHorizontal className="w-4 h-4 mr-2" />
-              {isFilterOpen ? "Hide Filters" : "Show Filters"}
-            </button>
           </div>
 
           <SearchFilters

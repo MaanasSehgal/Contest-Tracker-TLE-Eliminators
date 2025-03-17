@@ -75,7 +75,7 @@ const SolutionModal: React.FC<SolutionModalProps> = ({
       );
 
       if (response.data.status === "success") {
-        onSuccess(response.data.data.contest);
+        onSuccess(response.data.data);
       }
       toast.success("Contest solution updated successfully");
     } catch (error: any) {
