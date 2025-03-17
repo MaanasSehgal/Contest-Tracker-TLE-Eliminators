@@ -14,7 +14,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const config = (ls.get("contestTrackerConfig") as Config) || {
-      theme: "light",
+      theme: "dark",
     };
 
     if (config.theme !== currentTheme) {
