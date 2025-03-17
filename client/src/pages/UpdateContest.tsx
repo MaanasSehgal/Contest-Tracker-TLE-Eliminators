@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, X, CheckCircle2, SlidersHorizontal } from "lucide-react";
+import { Search, X } from "lucide-react";
 
 import ContestCard from "../components/update-contest/ContestCard";
 import SolutionModal from "../components/update-contest/SolutionModal";
@@ -49,7 +49,6 @@ const UpdateContest: React.FC = () => {
   );
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [pagination, setPagination] = useState<PaginationData>({
     total: 0,
@@ -58,7 +57,6 @@ const UpdateContest: React.FC = () => {
     totalPages: 0,
   });
   const [isSearchMode, setIsSearchMode] = useState(false);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
 
@@ -83,12 +81,11 @@ const UpdateContest: React.FC = () => {
       });
 
       if (response.data.status === "success") {
-        let filteredContests =
-          response.data.data.contests || response.data.data;
+        let filteredContests = response.data.data;
         setContests(filteredContests);
 
-        if (response.data.data.pagination) {
-          setPagination(response.data.data.pagination);
+        if (response.data.pagination) {
+          setPagination(response.data.pagination);
         }
       }
     } catch (error) {
@@ -137,9 +134,6 @@ const UpdateContest: React.FC = () => {
       )
     );
 
-    setShowSuccessMessage(true);
-    setTimeout(() => setShowSuccessMessage(false), 3000);
-
     setIsModalOpen(false);
     setSelectedContest(null);
   };
@@ -154,10 +148,6 @@ const UpdateContest: React.FC = () => {
       ...prev,
       page: newPage,
     }));
-  };
-
-  const toggleFilters = () => {
-    setIsFilterOpen(!isFilterOpen);
   };
 
   return (

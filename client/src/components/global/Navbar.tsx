@@ -180,6 +180,20 @@ const Navbar = () => {
                   <span>Post Contest Discussions</span>
                 </Link>
               </div>
+
+                <div className="relative">
+                <Link
+                  to="/update-contest"
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
+                  activeTab === "update-contest"
+                    ? "text-purple-600 dark:text-purple-400 font-semibold"
+                    : "text-gray-700 dark:text-darkText-300 hover:text-purple-600 dark:hover:text-purple-400"
+                  }`}
+                >
+                  <MessageSquare className="h-4 w-4" />
+                  <span>Update Contest</span>
+                </Link>
+                </div>
             </motion.div>
 
             <motion.button
@@ -262,6 +276,18 @@ const Navbar = () => {
                 >
                   <MessageSquare className="h-5 w-5" />
                   <span>Post Contest Discussions</span>
+                </Link>
+                <Link
+                  to="/update-contest"
+                  onClick={closeMenu}
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-md text-base font-medium transition-colors duration-300 ${
+                  activeTab === "update-contest"
+                    ? "bg-purple-100 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400"
+                    : "text-gray-700 dark:text-darkText-300 hover:bg-gray-100 dark:hover:bg-darkBox-800"
+                  }`}
+                >
+                  <MessageSquare className="h-5 w-5" />
+                  <span>Update Contest</span>
                 </Link>
               </div>
             </div>
