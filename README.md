@@ -438,3 +438,16 @@ Manually triggers both an update for all contests and solution links.
   "message": "Updated all contests and solution links successfully"
 }
 ```
+
+## Conclusion
+
+Thank you for checking out the **TLE Eliminators Contest Tracker**! This project is designed to make it easier for competitive programmers to stay on top of contests across platforms like LeetCode, CodeChef, and Codeforces. Whether you're keeping track of upcoming contests, revisiting past ones, or looking for post-contest solutions, this tool offers everything you need in one place.
+
+If you have any questions or feedback, feel free to reach out. Enjoy tracking your contests, and happy coding!
+
+### Contact
+
+- **Maanas Sehgal**  
+- **Email:** maanas.sehgal@gmail.com
+- **LinkedIn:** [Maanas Sehgal](https://www.linkedin.com/in/maanassehgal)
+- **GitHub:** [Maanas Sehgal](https://github.com/MaanasSehgal)
