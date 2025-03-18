@@ -13,6 +13,7 @@ import {
   updateSolutionInfo,
 } from "../utils/youtubeFetching.utils";
 import contestService from "../services/ContestService";
+import { updateAllContests, updateSolutions } from "../utils/utils";
 
 dotenv.config();
 
@@ -43,26 +44,6 @@ app.use(
 );
 
 app.use(express.json());
-
-const updateAllContests = async () => {
-  console.log("Running scheduled task: Updating all contests");
-  try {
-    await contestService.updateAllContests();
-    console.log("Scheduled contest update completed successfully");
-  } catch (error) {
-    console.error("Error in scheduled contest update:", error);
-  }
-};
-
-const updateSolutions = async () => {
-  console.log("Running solution link update task");
-  try {
-    await updateSolutionInfo();
-    console.log("Scheduled solution link update completed successfully");
-  } catch (error) {
-    console.error("Error in scheduled solution link update:", error);
-  }
-};
 
 // Routes
 app.get("/", (req, res) => {
