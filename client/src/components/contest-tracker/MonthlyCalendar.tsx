@@ -63,34 +63,28 @@ export default function MonthlyCalendar() {
   return (
     <div className="flex-1 px-2 py-2 bg-white border dark:bg-darkBox-900 dark:border-darkBorder-800 h-fit rounded-xl md:p-2 lg:p-4">
       <FullCalendar
-        ref={calendarRef}
-        plugins={[dayGridPlugin]}
-        initialView="dayGridMonth"
-        dayMaxEvents={4}
-        events={events
-          .filter((data) =>
-            data.contestDuration / 3600 > 24 && data.platform === "atcoder"
-              ? false
-              : true
-          )
-          .map((event) => {
-            return {
-              title: event._id,
-              date: event.contestStartDate,
-              end: event.contestEndDate,
-            };
-          })}
-        datesSet={handleDatesSet}
-        headerToolbar={{
-          left: "prev,next",
-          center: "title",
-          right: "",
-        }}
-        initialDate={new Date()}
-        eventContent={(eventInfo) => (
-          <CalendarEvent eventInfo={eventInfo} events={events} />
-        )}
-        height={738}
+      ref={calendarRef}
+      plugins={[dayGridPlugin]}
+      initialView="dayGridMonth"
+      dayMaxEvents={4}
+      events={events.map((event) => {
+        return {
+        title: event._id,
+        date: event.contestStartDate,
+        end: event.contestEndDate,
+        };
+      })}
+      datesSet={handleDatesSet}
+      headerToolbar={{
+        left: "prev,next",
+        center: "title",
+        right: "",
+      }}
+      initialDate={new Date()}
+      eventContent={(eventInfo) => (
+        <CalendarEvent eventInfo={eventInfo} events={events} />
+      )}
+      height={738}
       />
     </div>
   );

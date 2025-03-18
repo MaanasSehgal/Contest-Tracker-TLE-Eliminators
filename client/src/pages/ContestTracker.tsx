@@ -6,7 +6,7 @@ import UpcomingContests from "../components/contest-tracker/UpcomingContests";
 export default function ContestTracker() {
   return (
     <main className="bg-gray-50 dark:bg-dark-900">
-      <div className="flex flex-col w-full h-auto gap-2 px-4 pt-2 pb-4 mx-auto overflow-visible md:gap-4 max-w-7xl">
+      <div className="flex flex-col w-full h-auto gap-2 px-4 pt-2 pb-4 mx-auto overflow-visible md:gap-4 max-w-8xl">
         <div className="mt-4 md:mt-8">
           <CalenderHeader />
         </div>

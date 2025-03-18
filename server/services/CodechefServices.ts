@@ -55,8 +55,8 @@ export default class CodechefServices {
     private convertCodechefContestToSchemaData(
         contest: CodechefContestApiResponse
     ): Contest {
-        const startTime = new Date(contest.contest_start_date);
-        const endTime = new Date(contest.contest_end_date);
+        const startTime = new Date(new Date(contest.contest_start_date).toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+        const endTime = new Date(new Date(contest.contest_end_date).toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
         const duration = (endTime.getTime() - startTime.getTime()) / 1000;
 
         return generateContestSchemaDataFromApiData({
@@ -90,11 +90,11 @@ export default class CodechefServices {
 
     async saveCodechefPastContests() {
         try {
-            const futureContests = await this.getCodechefPastContests();
-            if (futureContests && futureContests.length > 0) {
+            const pastContests = await this.getCodechefPastContests();
+            if (pastContests && pastContests.length > 0) {
                 console.log("Codechef past contests updated successfully");
                 return await Promise.all(
-                    futureContests.map(async (contest) => {
+                    pastContests.map(async (contest) => {
                         const data = await eventRepository.updateContest(contest);
                         return data;
                     })
