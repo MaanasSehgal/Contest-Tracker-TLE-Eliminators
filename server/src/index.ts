@@ -32,9 +32,12 @@ db.once("open", () => {
 const app = express();
 const port = 8000;
 
-const getIndianTime = new Date().toLocaleString("en-US", {
-  timeZone: "Asia/Kolkata",
-});
+const getIndianTime = () => {
+  const indianTime = new Date().toLocaleString("en-US", {
+    timeZone: "Asia/Kolkata",
+  });
+  return indianTime;
+}
 
 app.use(
   cors({
@@ -47,7 +50,7 @@ app.use(express.json());
 
 // Routes
 app.get("/", (req, res) => {
-  console.log("/ route hit at time: ", getIndianTime);
+  console.log("/ route hit at time: ", getIndianTime());
   res.status(200).json({
     status: "success",
     message: "Server is on!",
@@ -55,7 +58,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/leetcode", async (req, res) => {
-  console.log("/leetcode route hit at time: ", getIndianTime);
+  console.log("/leetcode route hit at time: ", getIndianTime());
   try {
     const contests = await leetcodeService.saveLeetcodePastContests();
     res.status(200).json({
@@ -71,7 +74,7 @@ app.get("/leetcode", async (req, res) => {
 });
 
 app.get("/codechef", async (req, res) => {
-  console.log("/codechef route hit at time: ", getIndianTime);
+  console.log("/codechef route hit at time: ", getIndianTime());
   try {
     const contests = await codechefService.saveCodechefPastContests();
     res.status(200).json({
@@ -87,7 +90,7 @@ app.get("/codechef", async (req, res) => {
 });
 
 app.get("/codeforces", async (req, res) => {
-  console.log("/codeforces route hit at time: ", getIndianTime);
+  console.log("/codeforces route hit at time: ", getIndianTime());
   try {
     const contests = await codeforcesService.saveCodeforcesContests();
     res.status(200).json({
@@ -103,7 +106,7 @@ app.get("/codeforces", async (req, res) => {
 });
 
 app.get("/contests", async (req, res) => {
-  console.log("/contests route hit at time: ", getIndianTime);
+  console.log("/contests route hit at time: ", getIndianTime());
   try {
     const { startDate, endDate, page, limit } = req.query;
 
@@ -193,7 +196,7 @@ app.get("/contests", async (req, res) => {
 });
 
 app.get("/search-contests", async (req, res) => {
-  console.log("/search-contests route hit at time: ", getIndianTime);
+  console.log("/search-contests route hit at time: ", getIndianTime());
   try {
     const { query, platform, page, limit } = req.query;
 
@@ -233,7 +236,7 @@ app.get("/search-contests", async (req, res) => {
 app.get("/upcoming-contests", async (req, res) => {
   console.log(
     "/upcoming-contests route hit at time: ",
-    getIndianTime
+    getIndianTime()
   );
   try {
     const contests = await contestService.getUpcomingContests();
@@ -253,7 +256,7 @@ app.get("/upcoming-contests", async (req, res) => {
 app.get("/update-all-contests", async (req, res) => {
   console.log(
     "/update-all-contests route hit at time: ",
-    getIndianTime
+    getIndianTime()
   );
   try {
     await contestService.updateAllContests();
@@ -271,7 +274,7 @@ app.get("/update-all-contests", async (req, res) => {
 });
 
 app.get("/delete", async (req, res) => {
-  console.log("/delete route hit at time: ", getIndianTime);
+  console.log("/delete route hit at time: ", getIndianTime());
   const { contestId } = req.query;
   try {
     const result = await eventRepository.deleteAllContests();
@@ -290,7 +293,7 @@ app.get("/delete", async (req, res) => {
 app.get("/update-solution-links", async (req, res) => {
   console.log(
     "/update-solution-links route hit at time: ",
-    getIndianTime
+    getIndianTime()
   );
   try {
     await updateSolutionInfo();
@@ -307,7 +310,7 @@ app.get("/update-solution-links", async (req, res) => {
 });
 
 app.get("/get-pcd-videos", async (req, res) => {
-  console.log("/get-pcd-videos route hit at time: ", getIndianTime);
+  console.log("/get-pcd-videos route hit at time: ", getIndianTime());
   try {
     const videos = await getPCDVideos();
     res.status(200).json({
@@ -325,7 +328,7 @@ app.get("/get-pcd-videos", async (req, res) => {
 app.post("/update-contest-solution", async (req, res) => {
   console.log(
     "/update-contest-solution route hit at time: ",
-    getIndianTime
+    getIndianTime()
   );
   try {
     const { contestId, youtubeUrl } = req.body;
@@ -394,7 +397,7 @@ app.post("/update-contest-solution", async (req, res) => {
 app.get("/trigger-update-all-contests", async (req, res) => {
   console.log(
     "/trigger-update-all-contests route hit at time: ",
-    getIndianTime
+    getIndianTime()
   );
   try {
     await updateAllContests();
@@ -414,7 +417,7 @@ app.get("/trigger-update-all-contests", async (req, res) => {
 app.get("/trigger-update-solutions", async (req, res) => {
   console.log(
     "/trigger-update-solutions route hit at time: ",
-    getIndianTime
+    getIndianTime()
   );
   try {
     await updateSolutions();
@@ -431,7 +434,7 @@ app.get("/trigger-update-solutions", async (req, res) => {
 });
 
 app.get("/trigger-all", async (req, res) => {
-  console.log("/trigger-all route hit at time: ", getIndianTime);
+  console.log("/trigger-all route hit at time: ", getIndianTime());
   try {
     await updateAllContests();
     await updateSolutions();
@@ -448,8 +451,8 @@ app.get("/trigger-all", async (req, res) => {
 });
 
 // Every 12hr update all contests and update solution links
-cron.schedule("0 */12 * * *", async () => {
-  console.log("Running cron job at: ", getIndianTime);
+cron.schedule("0 0,12 * * *", async () => {
+  console.log("Running cron job at time: ", getIndianTime());
   try {
     await updateAllContests();
     console.log("All contests updated successfully.");
@@ -460,6 +463,7 @@ cron.schedule("0 */12 * * *", async () => {
     console.error("Error during scheduled task:", error);
   }
 });
+
 
 // Start server
 app.listen(port, () => {
