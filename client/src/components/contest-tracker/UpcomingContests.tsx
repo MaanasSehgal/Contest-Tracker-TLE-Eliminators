@@ -163,7 +163,7 @@ export function ContestCard({ contest }: { contest: ContestSchema }) {
   const currentTheme = useStore((state) => state.currentTheme);
 
   return (
-    <div className="flex flex-col flex-1 no-scrollbar min-w-[300px] w-full lg:max-w-[400px] gap-2 p-4 bg-white dark:bg-darkBox-900 dark:border-darkBorder-800 border border-gray-300 rounded-xl">
+    <div className="flex flex-col flex-1 no-scrollbar min-w-[300px] w-full lg:max-w-[360px] gap-2 p-4 bg-white dark:bg-darkBox-900 dark:border-darkBorder-800 border border-gray-300 rounded-xl">
       <div className="flex items-center">
         <div className="inline-block w-3 h-3 ml-2 mr-1 rounded-full bg-purple-500"></div>
         <div className="inline-flex items-center ml-2 text-sm text-gray-500 dark:text-darkText-400 ">

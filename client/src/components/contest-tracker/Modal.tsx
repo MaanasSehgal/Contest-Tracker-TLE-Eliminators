@@ -153,7 +153,7 @@ const Modal: React.FC<ModalProps> = ({ contest, onClose }) => {
                 ease: "easeOut",
               }}
               ref={modalRef}
-              className="relative w-[95%] sm:w-[400px] p-3 z-[100] bg-white dark:bg-darkBox-900 border rounded-lg dark:border-darkBorder-800 shadow-lg"
+              className="relative w-[95%] sm:w-[400px] p-3 z-[100] bg-white dark:bg-darkBox-900 border rounded-lg dark:border-darkBorder-800 shadow-lg overflow-x-hidden overflow-y-hidden no-scrollbar"
               style={{
                 boxShadow:
                   currentTheme === "dark"
@@ -255,7 +255,7 @@ const Modal: React.FC<ModalProps> = ({ contest, onClose }) => {
                       <span className="font-medium text-[10px]">Time</span>
                     </div>
                     <span className="text-[10px] text-gray-700 dark:text-darkText-400">
-                      {formatTime(contest.contestStartDate)}
+                      {formatTime(contest.contestStartDate)} - {formatTime(contest.contestEndDate)}
                     </span>
                   </div>
 

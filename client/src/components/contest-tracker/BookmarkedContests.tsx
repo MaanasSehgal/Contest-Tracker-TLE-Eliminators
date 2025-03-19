@@ -168,15 +168,12 @@ function ContestCard({
     try {
       setIsBookmarking(true);
 
-      // Create a new array without the current contest ID
       const updatedIds = bookmarkedContestIds.filter(
         (id) => id !== contest._id
       );
 
-      // Update the store
       setBookmarkedContestIds(updatedIds);
 
-      // Update local component state
       setBookmarkedContests((prevContests) =>
         prevContests.filter((c) => c._id !== contest._id)
       );
@@ -188,7 +185,7 @@ function ContestCard({
   };
 
   return (
-    <div className="flex flex-col flex-1 no-scrollbar min-w-[300px] w-full lg:max-w-[400px] gap-2 p-4 bg-white dark:bg-darkBox-900 dark:border-darkBorder-800 border border-gray-300 rounded-xl relative">
+    <div className="flex flex-col flex-1 no-scrollbar min-w-[300px] w-full lg:max-w-[360px] gap-2 p-4 bg-white dark:bg-darkBox-900 dark:border-darkBorder-800 border border-gray-300 rounded-xl relative">
       <button
         onClick={handleBookmarkToggle}
         disabled={isBookmarking}

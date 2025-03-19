@@ -1,11 +1,10 @@
-
-:root{
-  --dark-900:#111010;
-  --darkBox-800:#27272a;
-  --darkBox-900:#18181b;
-  --darkBorder-800:#27272a;
-  --darkText-400:#a1a1aa;
-  --darkText-500:#71717a;
+:root {
+  --dark-900: #111010;
+  --darkBox-800: #27272a;
+  --darkBox-900: #18181b;
+  --darkBorder-800: #27272a;
+  --darkText-400: #a1a1aa;
+  --darkText-500: #71717a;
 }
 
 /* Header toolbar */
@@ -20,49 +19,52 @@
 /* Buttons start   */
 .fc .fc-button-primary {
   background: none;
-  color:white;
+  color: white;
   border: 1px solid #e5e7eb;
   outline: none;
   padding: 4px 8px;
 }
 
-.dark .fc .fc-button-primary{
-  border:var(--darkBorder-900);
-  border:1px solid var(--darkBorder-800);
+.dark .fc .fc-button-primary {
+  border: var(--darkBorder-900);
+  border: 1px solid var(--darkBorder-800);
 }
-.dark .fc .fc-button-primary:hover{
+
+.dark .fc .fc-button-primary:hover {
   background: none;
   border: 1px solid var(--darkText-500);
 }
-.fc .fc-button-primary:active{
+
+.fc .fc-button-primary:active {
   background: none !important;
   outline: none !important;
-  border:none !important;
-  border:0px !important;
-  outline:0px !important;
+  border: none !important;
+  border: 0px !important;
+  outline: 0px !important;
 
 }
 
 
-.fc .fc-button-primary span{
+.fc .fc-button-primary span {
   font-size: 1.2rem;
   margin-top: -2px;
-  color:#2563eb;
+  color: #2563eb;
 }
-.dark .fc .fc-button-primary span
-{
+
+.dark .fc .fc-button-primary span {
   font-size: 1.2rem;
   margin-top: -2px;
   color: var(--darkText-400)
 }
-.fc .fc-button-group{
+
+.fc .fc-button-group {
   position: absolute;
   right: 4px;
-  top:0;
+  top: 0;
   padding: 4px 0;
 }
 
-.fc .fc-button-group{
+.fc .fc-button-group {
   gap: 8px;
 }
 
@@ -70,20 +72,22 @@
 
 
 /* Month title  */
-.fc-toolbar-chunk .fc-toolbar-title{
+.fc-toolbar-chunk .fc-toolbar-title {
   position: absolute;
   top: 0;
-  left:0;
+  left: 0;
   color: gray;
   margin-top: 2px;
 }
-.dark .fc-toolbar-chunk .fc-toolbar-title{
+
+.dark .fc-toolbar-chunk .fc-toolbar-title {
   position: absolute;
   top: 0;
-  left:0;
+  left: 0;
   color: #F0F0F0;
   margin-top: 2px;
 }
+
 /* Month title  */
 
 /* Week markers  */
@@ -91,10 +95,12 @@
   color: gray;
   font-weight: 400;
 }
+
 .dark .fc-scrollgrid-sync-inner {
   color: var(--darkText-500);
   font-weight: 400;
 }
+
 /* Week markers  */
 
 .fc-event {
@@ -108,116 +114,123 @@
   outline: none;
 }
 
-.rbc-header span{
+.rbc-header span {
   color: gray;
   font-weight: 400;
 }
-.rbc-agenda-view table.rbc-agenda-table tbody > tr > td{
+
+.rbc-agenda-view table.rbc-agenda-table tbody>tr>td {
   padding: 0;
   border: none;
   outline: none;
-  
+
 }
-.fc .fc-toolbar-title
-{
-   font-size: 1.25rem;
-   font-weight: 500;
-   color: #374151;
+
+.fc .fc-toolbar-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #374151;
 }
 
 
-.fc-daygrid-dot-event.fc-event-mirror, .fc-daygrid-dot-event{
+.fc-daygrid-dot-event.fc-event-mirror,
+.fc-daygrid-dot-event {
   margin-top: 0;
 }
-.fc-daygrid-dot-event.fc-event-mirror, .fc-daygrid-dot-event:hover {
- background: none;
+
+.fc-daygrid-dot-event.fc-event-mirror,
+.fc-daygrid-dot-event:hover {
+  background: none;
 }
 
 
-.fc .fc-scroller-liquid-absolute
-{
-   overflow: visible !important;
+.fc .fc-scroller-liquid-absolute {
+  overflow: visible !important;
 }
-.fc .fc-scroller-harness
-{
+
+.fc .fc-scroller-harness {
   overflow: visible;
 }
-.fc .fc-daygrid-event
-{
-  z-index: inherit !important;
-} 
-.fc .fc-scroller-liquid-absolute
-{
- overflow: visible !important;
-}
-.fc .fc-daygrid-event-harness-abs
-{
+
+.fc .fc-daygrid-event {
   z-index: inherit !important;
 }
 
-.fc-h-event .fc-event-main
-{
+.fc .fc-scroller-liquid-absolute {
+  overflow: visible !important;
+}
+
+.fc .fc-daygrid-event-harness-abs {
+  z-index: inherit !important;
+}
+
+.fc-h-event .fc-event-main {
   z-index: inherit !important;
 }
 
 /* Week view  */
-.fc-day-sat{
+.fc-day-sat {
   background-color: #f9fafb;
 }
- .fc-day-sun{
+
+.fc-day-sun {
   background-color: #f9fafb;
 }
-.dark .fc-day-sat{
+
+.dark .fc-day-sat {
   background-color: transparent;
 }
-.dark .fc-day-sun{
+
+.dark .fc-day-sun {
   background-color: transparent;
 }
+
 /* Day view  */
 
 /* present day */
-.fc .fc-daygrid-day.fc-day-today
-{
-  background: #f0f9ff!important;
+.fc .fc-daygrid-day.fc-day-today {
+  background: #f0f9ff !important;
 }
-.dark .fc .fc-daygrid-day.fc-day-today
-{
+
+.dark .fc .fc-daygrid-day.fc-day-today {
   background: #374151 !important;
 }
+
 /* present day */
 
-.fc-daygrid-day-number
-{
+.fc-daygrid-day-number {
   font-size: 12px
 }
-.fc .fc-daygrid-more-link{
+
+.fc .fc-daygrid-more-link {
   font-size: 12px;
 }
-table > tbody > tr
-{
-  height: 120px;
-}
-.fc-day-grid-day{
+
+table>tbody>tr {
   height: 120px;
 }
 
-.fc-direction-ltr{
-  overflow:hidden; 
+.fc-day-grid-day {
+  height: 120px;
+}
+
+.fc-direction-ltr {
+  overflow: hidden;
 }
 
 /* Table border  */
-.dark .fc-theme-standard .fc-scrollgrid
-{
+.dark .fc-theme-standard .fc-scrollgrid {
   border: 1px solid var(--darkBorder-800);
 }
 
 
-.dark .fc-theme-standard td, .dark .fc-theme-standard th
-{
+.dark .fc-theme-standard td,
+.dark .fc-theme-standard th {
   border: 1px solid var(--darkBorder-800) !important
 }
 
-.fc-theme-standard td, .fc-theme-standard th {
+.fc-theme-standard td,
+.fc-theme-standard th {
   border: 1px solid #e5e7eb !important
 }
 

@@ -11,7 +11,7 @@ export default function ContestTracker() {
           <CalenderHeader />
         </div>
         <div className="flex flex-col w-full gap-2 md:gap-4 md:flex-row">
-          <div className="flex flex-col">
+          <div className="flex flex-col md-max-w-[30%]">
             <BookmarkedContests />
             <UpcomingContests />
           </div>
